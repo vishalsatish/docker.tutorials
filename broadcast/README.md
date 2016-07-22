@@ -1,8 +1,10 @@
-# Broadcast
+# Broadcasting TCP Data to WebSocket Clients
 
-![broadcast](broadcast.png)
+The following topology graphic depicts how this scenario would be deployed in an enterprise environment.
 
-The gateway can be configured to broadcast any tcp backend to WebSocket clients.  Example configurations are shown for:
+![broadcast](docker-broadcast.png)
 
-* [netcat](netcat)
-* Node.js TCP Server (coming soon)
+The Gateway can be configured to broadcast any TCP backend to WebSocket clients. Example configurations are shown for:
+
+* [Netcat](netcat)
+* Node.js&reg; TCP Server - coming soon.
