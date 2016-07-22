@@ -1,0 +1,26 @@
+version: '2'
+services:
+  node1:
+    build: node1
+    networks:
+      all:
+        ipv4_address: 172.16.238.10
+        aliases:
+          - node1.kaazing.example.com
+          - kaazing.example.com
+    ports:
+      - "8000:8000"
+  node2:
+    build: node2
+    networks:
+      all:
+        ipv4_address: 172.16.238.11
+        aliases:
+          - node2.kaazing.example.com
+    ports:
+      - "8001:8001"
+networks:
+  all:
+    ipam:
+      config:
+        - subnet: 172.16.238.0/24

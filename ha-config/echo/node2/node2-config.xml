@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gateway-config xmlns="http://xmlns.kaazing.org/2015/11/gateway">
+
+  <cluster>
+     <name>MyCluster</name>
+     <accept>tcp://172.16.238.11:61616</accept>
+     <connect>tcp://172.16.238.10:61617</connect>
+  </cluster>
+
+  <service>
+    <name>Balancer</name>
+    <accept>ws://kaazing.example.com:8000/</accept>
+    <type>balancer</type>
+    <accept-options>
+       <tcp.bind>8000</tcp.bind>
+    </accept-options>
+    <cross-site-constraint>
+       <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+
+  <service>
+    <name>Echo</name>
+    <description>This is an echo service</description>
+    <accept>ws://node2.kaazing.example.com:8001/</accept>
+    <balance>ws://kaazing.example.com:8000/</balance>
+
+    <type>echo</type>
+
+    <cross-site-constraint>
+      <!-- Only websockets coming from this origin can access this url -->
+      <allow-origin>http://kaazing.example.com:8000/</allow-origin>
+    </cross-site-constraint>
+  </service>
+
+  <security>
+    <keystore>
+      <type>JCEKS</type>
+      <file>keystore.db</file>
+      <password-file>keystore.pw</password-file>
+    </keystore>
+  </security>
+
+</gateway-config>
