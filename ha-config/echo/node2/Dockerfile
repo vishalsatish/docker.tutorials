@@ -1,5 +1,4 @@
 FROM kaazing/enterprise-gateway:latest
-FROM kaazing/unstable-gateway:develop-SNAPSHOT
 
 # Generate Keystore entry for kaazing.example.com
 
